@@ -419,6 +419,9 @@ void cedar::dyn::NeuralField::readConfiguration(const cedar::aux::ConfigurationN
       this->_mKernels->clear();
     }
 
+
+//CAN PARALLELIZE
+
     for (unsigned int i = 0; i < num_kernels; ++i)
     {
       // find the configuration node for the kernel
@@ -662,6 +665,9 @@ void cedar::dyn::NeuralField::updateMatrices()
   this->unlockAll();
   if (dimensionality > 0) // only adapt kernel in non-0D case
   {
+
+    //PARALLELIZE
+
     for (unsigned int i = 0; i < _mKernels->size(); i++)
     {
       this->_mKernels->at(i)->setDimensionality(dimensionality);

@@ -121,6 +121,8 @@ void cedar::aux::kernel::Separable::updateKernelMatrix()
 
     CEDAR_DEBUG_ASSERT(this->mKernelParts.size() == this->getDimensionality());
 
+    //#pragma acc kernels
+
     for (size_t i = 1; i < this->mKernelParts.size(); ++i)
     {
       combined = combined * this->mKernelParts.at(i).t();
@@ -136,6 +138,9 @@ void cedar::aux::kernel::Separable::updateKernelMatrix()
   {
     CEDAR_ASSERT(this->getDimensionality() > 2);
     std::vector<int> sizes;
+
+    //#pragma acc kernels
+
     for (unsigned int dim = 0; dim < this->getDimensionality(); ++dim)
     {
       sizes.push_back(static_cast<int>(this->getSize(dim)));

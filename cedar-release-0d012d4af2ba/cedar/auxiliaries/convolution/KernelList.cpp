@@ -105,6 +105,9 @@ void cedar::aux::conv::KernelList::calculateCombinedKernel()
   {
     new_combined_kernel = cv::Mat::zeros(1, 1, CV_32F);
 
+
+    //PARALLELIZE (look out for kernel variable)
+
     for (size_t i = 0; i < this->size(); ++i)
     {
       cedar::aux::kernel::ConstKernelPtr kernel = this->getKernel(i);
@@ -143,6 +146,9 @@ void cedar::aux::conv::KernelList::calculateCombinedKernel()
   }
   else if (this->size() > 0 && this->getKernel(0)->getDimensionality() > 2)
   {
+
+    //PARALLELIZE BOTH
+
     std::vector<int> sizes;
     sizes.resize(this->getKernel(0)->getDimensionality());
     for (size_t dim = 0; dim < this->getKernel(0)->getDimensionality(); ++dim)

@@ -164,6 +164,9 @@ void cedar::dyn::SpaceCodeToRateMatrix::compute(const cedar::proc::Arguments&)
   const cv::Mat& input = this->mInput->getData();
   output = 0.0;
 
+
+  //PARALLELIZE (look out for output variable)
+
   for (unsigned int row = 0; row < rows; ++row)
   {
     for (unsigned int col = 0; col < cols; ++col)

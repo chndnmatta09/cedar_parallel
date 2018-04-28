@@ -220,6 +220,9 @@ void cedar::dyn::Preshape::updateMatrices()
   int dimensionality = static_cast<int>(_mDimensionality->getValue());
 
   std::vector<int> sizes(dimensionality);
+
+  //PARALLELIZE
+
   for (int dim = 0; dim < dimensionality; ++dim)
   {
     sizes[dim] = _mSizes->at(dim);

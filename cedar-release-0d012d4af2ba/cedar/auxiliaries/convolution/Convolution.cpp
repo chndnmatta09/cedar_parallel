@@ -179,6 +179,9 @@ void cedar::aux::conv::Convolution::updateEngineCapabilities()
     this->_mMode->disableAll();
   }
 
+
+  //PARALLELIZE
+
   const std::vector<cedar::aux::Enum>& modes = cedar::aux::conv::Mode::type().list();
   for (size_t i = 0; i < modes.size(); ++i)
   {
@@ -189,6 +192,9 @@ void cedar::aux::conv::Convolution::updateEngineCapabilities()
       this->_mMode->setEnabled(enum_value, this->getEngine()->checkModeCapability(enum_value));
     }
   }
+
+
+  //PARALLELIZE
 
   this->_mBorderType->enableAll();
   const std::vector<cedar::aux::Enum>& border_types = cedar::aux::conv::BorderType::type().list();

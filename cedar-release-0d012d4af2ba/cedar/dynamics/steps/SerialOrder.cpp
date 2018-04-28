@@ -377,6 +377,9 @@ void cedar::dyn::SerialOrder::eulerStep(const cedar::unit::Time& time)
   }
 }
 
+
+//PARALLELIZE
+
 void cedar::dyn::SerialOrder::reset()
 {
   for (unsigned int i = 0; i < mOrdinalNodes.size(); ++i)

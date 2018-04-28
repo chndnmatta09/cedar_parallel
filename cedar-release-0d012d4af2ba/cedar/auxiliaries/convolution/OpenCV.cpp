@@ -162,6 +162,9 @@ void cedar::aux::conv::OpenCV::translateAnchor
   std::vector<int> point;
   point.assign(2, -1);
 
+
+  //PROBABLY PARALLELIZE
+
   for (size_t i = 0; i < 2; ++i)
   {
     if (anchor_vector.size() > i && sizes.size() > i)
@@ -610,6 +613,9 @@ cv::Mat cedar::aux::conv::OpenCV::convolve
   {
   case cedar::aux::conv::Mode::Same:
     {
+
+      //PARALLELIZE (look out for result)
+
       cv::Mat result = 0.0 * matrix;
       for (size_t i = 0; i < kernelList->size(); ++i)
       {
@@ -627,6 +633,9 @@ cv::Mat cedar::aux::conv::OpenCV::convolve
       if (kernelList->checkForSameKernelSize())
       {
         cv::Mat matrix_full = createFullMatrix(matrix, kernelList, borderType);
+
+
+      //PARALLELIZE (look out for result)
 
         cv::Mat result = 0.0 * matrix_full;
         for (size_t i = 0; i < kernelList->size(); ++i)
@@ -661,6 +670,9 @@ cv::Mat cedar::aux::conv::OpenCV::convolve
         }
         else
         {
+
+          //PARALLELIZE (look out for result)
+
           cv::Mat result = 0.0 * matrix.clone();
           for (size_t i = 0; i < kernelList->size(); ++i)
           {
